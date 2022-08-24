@@ -3,7 +3,7 @@
 set -eux
 
 SCRIPT_DIR="$( realpath "$( dirname "${BASH_SOURCE[0]}")")"
-TEMPLATE_FILE="$SCRIPT_DIR/webhook-template.json"
+TEMPLATE_FILE="$SCRIPT_DIR/payload-template.json"
 
 curl -sX POST \
   -H "Content-Type: application/json" \

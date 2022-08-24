@@ -1,9 +1,9 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: postsync
+  name: hook
   annotations:
-    argocd.argoproj.io/hook: PostSync
+    argocd.argoproj.io/hook: <todo>
 spec:
   template:
     spec:
@@ -13,10 +13,10 @@ spec:
           imagePullPolicy: IfNotPresent
           envFrom:
             - configMapRef:
-                name: postsync-env
+                name: hook-config
           command:
             - /bin/bash
-            - /scripts/postsync.sh
+            - /scripts/hook.sh
           volumeMounts:
             - name: files
               mountPath: /scripts
@@ -24,6 +24,6 @@ spec:
       volumes:
         - name: files
           configMap:
-            name: postsync-files
+            name: hook-files
 
 
